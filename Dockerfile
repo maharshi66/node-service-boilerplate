@@ -13,9 +13,11 @@ RUN npm install --production
 # Copy the rest of the application files to the working directory
 COPY server/ .
 
+# Copy the .env file to the working directory in the container
+COPY .env ./
+
 # Expose the port that your Node.js application listens on
-# Replace '3000' with the appropriate port number if needed
-EXPOSE 3000
+EXPOSE 3001
 
 # Set the command to run your Node.js application
 CMD ["node", "-r", "esm", "app.js"]

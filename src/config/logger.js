@@ -12,7 +12,7 @@ const consoleTransport = new winston.transports.Console({
    winston.format.timestamp({
            format: 'MMM-DD-YYYY HH:mm:ss'
        }),
-  winston.format.printf(info => `${info.level}: ${[info.timestamp]}:${info.message}`),
+  winston.format.printf(info => `${info.level}: ${[info.timestamp]}: ${info.message}`),
   ),
 });
 
@@ -28,4 +28,4 @@ const logger = winston.createLogger({
 
 export default logger;
 
-//TODO: Production logger and other transports like file or database
+//TODO: Production logger and other transports like file or database for errors/activity in the app

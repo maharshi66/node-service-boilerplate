@@ -4,7 +4,8 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import ErrorResponse from '../../utils/errorResponse';
 import errorHandler from '../../utils/errorHandler';
-
+import sampleUserRoutes from '../../app/routes/sample.user.routes';
+  
 export default ({ app, express }) => {
   // Enable Cross-Origin Resource Sharing (CORS)
   app.use(cors());
@@ -19,6 +20,12 @@ export default ({ app, express }) => {
   // Prevent XSS attacks
   app.use(xss());
 
+  // Logging HTTP requests to console during development
+  if (process.env.NODE_ENV === 'development') {
+    const morgan = require('morgan');
+    app.use(morgan('dev'));
+  }
+
   // Rate limiting to prevent abuse
   const limiter = rateLimit({
     windowMs: 5 * 60 * 1000, // 5 minutes
@@ -26,11 +33,8 @@ export default ({ app, express }) => {
   });
   app.use(limiter);
 
-  // Logging HTTP requests to console during development
-  if (process.env.NODE_ENV === 'development') {
-    const morgan = require('morgan');    
-    app.use(morgan('dev'));
-  }
+  // Mounting the routes
+  app.use('/sample-users', sampleUserRoutes);
 
   // Custom error response handling
   app.use((req, res, next) => {
