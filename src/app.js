@@ -13,4 +13,5 @@ process.on('unhandledRejection', (err, _) => {
 });
 
 process.on('unhandledRejection', (err, _) => {
-  console.log(`Server Error: ${err}`);})
+  console.log(`Server Error: ${err}`);
+});
