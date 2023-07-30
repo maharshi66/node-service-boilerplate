@@ -1,5 +1,11 @@
 import express from 'express';
-import { getAllUsers, createUser, getUserById, updateUser, deleteUser } from '../controllers/sample.user.controller';
+import {
+  getAllUsers,
+  createUser,
+  getUserById,
+  updateUser,
+  deleteUser,
+} from '../controllers/sample.user.controller';
 import { validateUser } from '../validations/sample.user.validations';
 import authMiddleware from '../middleware/sample.auth';
 

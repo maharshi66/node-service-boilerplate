@@ -5,14 +5,14 @@ import rateLimit from 'express-rate-limit';
 import ErrorResponse from '../../utils/errorResponse';
 import errorHandler from '../../utils/errorHandler';
 import sampleUserRoutes from '../../app/routes/sample.user.routes';
-  
+
 export default ({ app, express }) => {
   // Enable Cross-Origin Resource Sharing (CORS)
   app.use(cors());
 
   // Parse incoming request bodies
   app.use(express.json());
-  app.use(express.urlencoded({ extended: true }))
+  app.use(express.urlencoded({ extended: true }));
 
   // Set security HTTP headers
   app.use(helmet());
@@ -54,4 +54,4 @@ export default ({ app, express }) => {
   });
 
   return app;
-}
+};
