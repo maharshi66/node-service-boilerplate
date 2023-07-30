@@ -11,3 +11,6 @@ process.on('uncaughtException', (err, _) => {
 process.on('unhandledRejection', (err, _) => {
   console.log(`Server Error: ${err}`);
 });
+
+process.on('unhandledRejection', (err, _) => {
+  console.log(`Server Error: ${err}`);})
